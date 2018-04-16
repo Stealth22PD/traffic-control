@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define Traffic Control_TargetDir=$(var.Traffic Control.TargetDir)?>
+  <Product Id="*" Name="Traffic Control" Language="1033" Version="1.1.0.0" Manufacturer="Stealth22" UpgradeCode="5f1e4789-df19-4fc5-9769-4b9ac0f23468">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Property Id="RETAILDIR">
+      <RegistrySearch Id="InstallPathRetail" Root="HKLM" Key="Software\Rockstar Games\Grand Theft Auto V" Name="InstallFolder" Win64="no" Type="raw" />
+    </Property>
+
+    <Property Id="STEAMDIR">
+      <RegistrySearch Id="InstallPathSteam" Root="HKLM" Key="Software\Rockstar Games\GTAV" Name="InstallFolderSteam" Win64="no" Type="raw" />
+    </Property>
+
+    <Property Id="GTAFOUND" Value="no"></Property>
+
+    <CustomAction Id="GetGTAFolder" Script="vbscript">
+      <![CDATA[         
+        valueSteam = Session.Property("STEAMDIR")
+        valueRetail = Session.Property("RETAILDIR")
+        
+        If valueSteam <> "" Then
+          If Right(valueSteam, 5) = "\GTAV" Then
+            valueSteam = Left(valueSteam, Len(valueSteam) - 5) 
+            Session.Property("STEAMDIR") = valueSteam
+            
+            Session.Property("GTAFOUND") = "yes"  
+            Session.Property("INSTALLFOLDER") = valueSteam  
+          End If
+        Else
+          If valueRetail <> "" Then
+            Session.Property("GTAFOUND") = "yes"  
+            Session.Property("INSTALLFOLDER") = valueRetail  
+          End If
+        End If
+      ]]>
+    </CustomAction>
+
+    <Condition Message="You must have Administrator privileges to run this installation.">Privileged</Condition>
+    <Condition Message="Grand Theft Auto V was not found on your system, or your installation is corrupt."><![CDATA[(RETAILDIR OR STEAMDIR) OR Installed]]></Condition>
+
+    <InstallExecuteSequence>
+      <Custom Action="GetGTAFolder" Before="AppSearch">NOT REMOVE</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id="ProductFeature" Title="Traffic Control" Level="1">
+      <ComponentGroupRef Id="GTAV_Files" />
+      <ComponentGroupRef Id="Plugins_Files" />
+      <ComponentGroupRef Id="LSPDFR_Files" />
+      <ComponentGroupRef Id="PoliceSmartRadio_Off_Traffic_Control_files" />
+      <ComponentGroupRef Id="PoliceSmartRadio_On_Traffic_Control_files" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="INSTALLFOLDER" Name="Grand Theft Auto V">
+        <Directory Id="Plugins" Name="Plugins">
+          <Directory Id="LSPDFR" Name="LSPDFR">
+            <Directory Id="PoliceSmartRadio" Name="PoliceSmartRadio">
+              <Directory Id="PoliceSmartRadio_Display" Name="Display">
+                <Directory Id="PoliceSmartRadio_Off" Name="Off">
+                  <Directory Id="PoliceSmartRadio_Off_Traffic_Control" Name="Traffic Control">
+                  </Directory>
+                </Directory>
+                <Directory Id="PoliceSmartRadio_On" Name="On">
+                  <Directory Id="PoliceSmartRadio_On_Traffic_Control" Name="Traffic Control">
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="GTAV_Files" Directory="INSTALLFOLDER">
+      <Component Id="RAGENativeUI.dll" Guid="c790f219-62db-49ca-84a7-19b83849f6a3" Permanent="yes">
+        <File Id="RAGENativeUI.dll" Name="RAGENativeUI.dll" Source="$(var.Traffic Control_TargetDir)RAGENativeUI.dll" />
+      </Component>
+
+      <Component Id="Stealth.Common.dll" Guid="8ff4b510-2267-42ae-a3e3-4914825d1618" Permanent="yes">
+        <File Id="Stealth.Common.dll" Name="Stealth.Common.dll" Source="$(var.Traffic Control_TargetDir)Stealth.Common.dll" />
+      </Component>
+      <Component Id="Traffic_Control_README.txt" Guid="ba0f913c-a135-4fb5-a5a0-ff416eff1977">
+        <File Id="Traffic_Control_README.txt" Name="Traffic_Control_README.txt" Source="$(var.Traffic Control_TargetDir)Traffic_Control_README.txt" />
+      </Component>
+      
+      <Component Id="RagePluginHookSDK.dll" Guid="121883dc-c038-4cbd-9f45-98d0020bea9e">
+        <File Id="RagePluginHookSDK.dll" Name="RagePluginHookSDK.dll" Source="$(var.Traffic Control_TargetDir)RagePluginHookSDK.dll" />
+      </Component>
+      <Component Id="LSPD_First_Response.dll" Guid="ba6d426e-22b1-4b1b-b2e3-28069cd74580">
+        <File Id="LSPD_First_Response.dll" Name="LSPD First Response.dll" Source="$(var.Traffic Control_TargetDir)LSPD First Response.dll" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Plugins_Files" Directory="Plugins">
+      <Component Id="Delete_Old_DLL" Guid="79C91B5B-A381-4D64-8D5A-2555184B3936">
+        <RemoveFile Id="Remove_DLL" Name="TrafficControl.dll" On="install" />
+      </Component>
+    
+      <Component Id="Delete_Old_INI" Guid="09CBC397-6F5E-4654-BC1A-0AB879EF7065">
+        <RemoveFile Id="Remove_INI" Name="TrafficControl.ini" On="install" />
+      </Component>
+    </ComponentGroup>
+    
+    <ComponentGroup Id="LSPDFR_Files" Directory="LSPDFR">
+      <Component Id="Traffic_Control.ini" Guid="a519cfb9-5942-42ea-8521-1efd4df5e89e">
+        <File Id="Traffic_Control.ini" Name="Traffic Control.ini" Source="$(var.Traffic Control_TargetDir)Traffic Control.ini" />
+      </Component>
+      <Component Id="Traffic_Control.dll" Guid="f2bf150d-c908-4ff2-ad24-2ef951f5ea1e">
+        <File Id="Traffic_Control.dll" Name="Traffic Control.dll" Source="$(var.Traffic Control_TargetDir)Traffic Control.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="PoliceSmartRadio_Off_Traffic_Control_files" Directory="PoliceSmartRadio_Off_Traffic_Control">
+      <Component Id="PoliceSmartRadio_Display_Off_Traffic_Control_release.png" Guid="690ea8f0-d98e-42e7-a699-9c4c7bd783cf">
+        <File Id="PoliceSmartRadio_Display_Off_Traffic_Control_release.png" Name="release.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\Off\Traffic Control\release.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_Off_Traffic_Control_release_all.png" Guid="3d40787d-0bca-4e20-ad4d-28b5dc219a4f">
+        <File Id="PoliceSmartRadio_Display_Off_Traffic_Control_release_all.png" Name="release_all.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\Off\Traffic Control\release_all.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_Off_Traffic_Control_slow_traffic.png" Guid="2a60e45f-6c13-4df0-a731-ca33ae553d17">
+        <File Id="PoliceSmartRadio_Display_Off_Traffic_Control_slow_traffic.png" Name="slow_traffic.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\Off\Traffic Control\slow_traffic.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_Off_Traffic_Control_stop_traffic.png" Guid="440312db-2c0d-431b-9f1e-c7ca2b720b38">
+        <File Id="PoliceSmartRadio_Display_Off_Traffic_Control_stop_traffic.png" Name="stop_traffic.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\Off\Traffic Control\stop_traffic.png" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="PoliceSmartRadio_On_Traffic_Control_files" Directory="PoliceSmartRadio_On_Traffic_Control">
+      <Component Id="PoliceSmartRadio_Display_On_Traffic_Control_release.png" Guid="36f6e2b8-2ed5-46c5-b1b6-f143159aa61b">
+        <File Id="PoliceSmartRadio_Display_On_Traffic_Control_release.png" Name="release.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\On\Traffic Control\release.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_On_Traffic_Control_release_all.png" Guid="b570a640-2a68-4580-aa4f-f17c287b4cc6">
+        <File Id="PoliceSmartRadio_Display_On_Traffic_Control_release_all.png" Name="release_all.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\On\Traffic Control\release_all.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_On_Traffic_Control_slow_traffic.png" Guid="01ad30e0-785b-4698-bc8e-d65840cf263c">
+        <File Id="PoliceSmartRadio_Display_On_Traffic_Control_slow_traffic.png" Name="slow_traffic.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\On\Traffic Control\slow_traffic.png" />
+      </Component>
+      <Component Id="PoliceSmartRadio_Display_On_Traffic_Control_stop_traffic.png" Guid="9422a2ca-418b-41bc-8d53-7aa270854870">
+        <File Id="PoliceSmartRadio_Display_On_Traffic_Control_stop_traffic.png" Name="stop_traffic.png" Source="$(var.Traffic Control_TargetDir)PoliceSmartRadio\Display\On\Traffic Control\stop_traffic.png" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
