@@ -74,7 +74,7 @@ namespace Stealth.Plugins.TrafficControl.Common
 
         internal static bool IsPoliceSmartRadioRunning()
         {
-            return IsLSPDFRPluginRunning("PoliceSmartRadio", new Version(1, 1, 0, 0));
+            return IsLSPDFRPluginRunning("PoliceSmartRadio", new Version(1, 1, 2, 0));
         }
 
         internal static bool IsLSPDFRPluginRunning(string pName, Version pMinVersion = null)

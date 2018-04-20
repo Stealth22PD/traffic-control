@@ -12,10 +12,10 @@ namespace Stealth.Plugins.TrafficControl.Common
         internal const int LCPDFRDownloadID = 7953;
         internal const string DLLPath = @"Plugins\LSPDFR\Traffic Control.dll";
 
-        internal const string ReqCommonVersion = "1.8.6327.38340";
-        internal const string ReqRPHVersion = "0.51.1056.10373"; //"0.52.1061.10387";
+        internal const string ReqCommonVersion = "2.0.6684.27674";
+        internal const string ReqRPHVersion = "0.62.1216.14731";
         internal const string ReqLSPDFRVersion = "0.3.38.5436";
-        internal const string ReqRNUIVersion = "1.5.1.0";
+        internal const string ReqRNUIVersion = "1.6.3.0";
 
         internal const Keys DefaultStopTrafficKey = Keys.U;
 
