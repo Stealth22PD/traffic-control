@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Traffic Control VB", "Traffic Control VB\Traffic Control VB.vbproj", "{FD67942C-DDE0-4980-B8FB-749C01FD499F}"
-EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Traffic Control Setup", "Traffic Control Setup\Traffic Control Setup.wixproj", "{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traffic Control", "Traffic Control\Traffic Control.csproj", "{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}"
@@ -19,14 +17,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Debug|x64.ActiveCfg = Debug|x64
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.QA|Any CPU.ActiveCfg = Debug|x64
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.QA|x64.ActiveCfg = QA|x64
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD67942C-DDE0-4980-B8FB-749C01FD499F}.Release|x64.ActiveCfg = Release|x64
 		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Debug|x64.ActiveCfg = Debug|x64
 		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.QA|Any CPU.ActiveCfg = Release|x64
@@ -50,19 +40,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://stealth22pd.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Traffic\u0020Control\u0020VB\\Traffic\u0020Control\u0020VB.vbproj
-		SccProjectName1 = Traffic\u0020Control\u0020VB
-		SccLocalPath1 = Traffic\u0020Control\u0020VB
-		SccProjectUniqueName2 = Traffic\u0020Control\u0020Setup\\Traffic\u0020Control\u0020Setup.wixproj
-		SccProjectName2 = Traffic\u0020Control\u0020Setup
-		SccLocalPath2 = Traffic\u0020Control\u0020Setup
-		SccProjectUniqueName3 = Traffic\u0020Control\\Traffic\u0020Control.csproj
-		SccProjectName3 = Traffic\u0020Control
-		SccLocalPath3 = Traffic\u0020Control
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7EB2C8E-7806-48D6-9A9B-CCD4EB972C7B}
 	EndGlobalSection
 EndGlobal
