@@ -24,8 +24,8 @@ namespace Stealth.Plugins.TrafficControl
         private static UIMenuCheckboxItem CheckboxShortcutsEnabled = new UIMenuCheckboxItem("Enable Shortcut Keys", Config.ShortcutKeysEnabled, "Enable/disable shortcut keybinds.");
         private static UIMenuCheckboxItem CheckboxBlipsEnabled = new UIMenuCheckboxItem("Show Roadblock Blips", Config.BlipsEnabled, "Enable/disable roadblock/speed zone blips.");
 
-        private static List<dynamic> SpeedChoices = new object[] { "15", "20", "25", "30", "35", "40", "45", "50" }.ToList();
-        private static List<dynamic> RadiusChoices = new object[] { "20", "40", "60", "80", "100" }.ToList();
+        private static List<int> SpeedChoices = new List<int> { 15, 20, 25, 30, 35, 40, 45, 50 };
+        private static List<int> RadiusChoices = new List<int> { 20, 40, 60, 80, 100 };
 
         private static UIMenuListItem ListRestrictedSpeed = null;
         private static UIMenuListItem ListSpeedZoneRadius = null;
@@ -124,29 +124,36 @@ namespace Stealth.Plugins.TrafficControl
             };
 
             int SpeedIndex = 0;
-            if (SpeedChoices.Contains(Config.RestrictedSpeed.ToString()))
+            if (SpeedChoices.Contains(Config.RestrictedSpeed))
             {
-                SpeedIndex = SpeedChoices.IndexOf(Config.RestrictedSpeed.ToString());
+                SpeedIndex = SpeedChoices.IndexOf(Config.RestrictedSpeed);
             }
             else
             {
-                SpeedChoices.Add(Config.RestrictedSpeed.ToString());
+                SpeedChoices.Add(Config.RestrictedSpeed);
                 SpeedIndex = (SpeedChoices.Count - 1);
             }
 
             int RadiusIndex = 0;
-            if (RadiusChoices.Contains(Config.SpeedZoneRadius.ToString()))
+            if (RadiusChoices.Contains(Config.SpeedZoneRadius))
             {
-                RadiusIndex = RadiusChoices.IndexOf(Config.SpeedZoneRadius.ToString());
+                RadiusIndex = RadiusChoices.IndexOf(Config.SpeedZoneRadius);
             }
             else
             {
-                RadiusChoices.Add(Config.SpeedZoneRadius.ToString());
+                RadiusChoices.Add(Config.SpeedZoneRadius);
                 RadiusIndex = (RadiusChoices.Count - 1);
             }
 
-            ListRestrictedSpeed = new UIMenuListItem("Restricted Speed in MPH", SpeedChoices, SpeedIndex);
-            ListSpeedZoneRadius = new UIMenuListItem("Speed Zone Radius in Metres", RadiusChoices, RadiusIndex);
+            ListRestrictedSpeed = new UIMenuListItem("Restricted Speed in MPH", "", SpeedChoices.ToArray())
+            {
+                Index = SpeedIndex
+            };
+
+            ListSpeedZoneRadius = new UIMenuListItem("Speed Zone Radius in Metres", "", RadiusChoices.ToArray())
+            {
+                Index = RadiusIndex
+            };
 
             items.Add(ListRestrictedSpeed);
             items.Add(ListSpeedZoneRadius);
@@ -408,10 +415,10 @@ namespace Stealth.Plugins.TrafficControl
             if (sender.Equals(TrafficMenu) == true)
             {
                 if (listItem.Equals(ListRestrictedSpeed))
-                    Config.RestrictedSpeed = Convert.ToInt32((string)ListRestrictedSpeed.Items[newIndex]);
+                    Config.RestrictedSpeed = Convert.ToInt32((string)ListRestrictedSpeed.Collection[newIndex].Value);
 
                 else if (listItem.Equals(ListSpeedZoneRadius))
-                    Config.SpeedZoneRadius = Convert.ToInt32((string)ListSpeedZoneRadius.Items[newIndex]);
+                    Config.SpeedZoneRadius = Convert.ToInt32((string)ListSpeedZoneRadius.Collection[newIndex].Value);
             }
         }
     }

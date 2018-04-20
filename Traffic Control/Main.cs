@@ -45,34 +45,7 @@ namespace Stealth.Plugins.TrafficControl
                 return;
             }
 
-            if (Globals.IsBeta)
-            {
-                Globals.Logger.LogTrivial("Traffic Control is in beta");
-
-                System.Threading.Tasks.Task.Run(async () =>
-                {
-                    string fileSecretUUID = "2727d8d4-9b61-4fee-afa7-dccf88f625f3";
-
-                    bool isBetaKeyValid = await BetaFuncs.IsValidKey(Constants.LCPDFRDownloadID, fileSecretUUID, Config.BetaKey);
-
-                    if (isBetaKeyValid)
-                    {
-                        StartPlugin(onDuty);
-                    }
-                    else
-                    {
-                        Globals.Logger.LogTrivial("ERROR: Beta key authorization failed!");
-                        Funcs.DisplayNotification("BETA KEY CHECK", "~r~AUTHENTICATION FAILED!");
-                    }
-                });
-            }
-            else
-            {
-                Globals.Logger.LogTrivial("Traffic Control is not in beta");
-
-                StartPlugin(onDuty);
-            }
-            
+            StartPlugin(onDuty);
         }
 
         private static void StartPlugin(bool onDuty)

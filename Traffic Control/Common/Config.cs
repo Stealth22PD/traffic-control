@@ -14,8 +14,6 @@ namespace Stealth.Plugins.TrafficControl.Common
         internal const string INIFilePath = "Plugins\\LSPDFR\\" + INIFileName;
         private static InitializationFile mINIFile = new InitializationFile(INIFilePath);
 
-        internal static string BetaKey { get; set; } = "NULL";
-
         internal static Keys StopTrafficKey { get; set; } = Constants.DefaultStopTrafficKey;
         internal static Keys StopTrafficModKey { get; set; } = Constants.DefaultStopTrafficModKey;
 
@@ -53,8 +51,6 @@ namespace Stealth.Plugins.TrafficControl.Common
             mINIFile.Create();
 
             // Settings
-            mINIFile.Write(ECfgSections.SETTINGS.ToString(), "BetaKey", "NULL");
-
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.RestrictedSpeed.ToString(), Constants.DefaultRestrictedSpeed);
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.SpeedZoneRadius.ToString(), Constants.DefaultSpeedZoneRadius);
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.PoliceIgnoreRoadblocks.ToString(), Constants.DefaultPoliceIgnoreRoadblocks);
@@ -90,8 +86,6 @@ namespace Stealth.Plugins.TrafficControl.Common
         private static void ReadINI()
         {
             // Settings
-            BetaKey = mINIFile.ReadString(ECfgSections.SETTINGS.ToString(), "BetaKey", "NULL");
-
             RestrictedSpeed = mINIFile.ReadInt32(ECfgSections.SETTINGS.ToString(), ESettings.RestrictedSpeed.ToString(), Constants.DefaultRestrictedSpeed);
             SpeedZoneRadius = mINIFile.ReadInt32(ECfgSections.SETTINGS.ToString(), ESettings.SpeedZoneRadius.ToString(), Constants.DefaultSpeedZoneRadius);
             PoliceIgnoreRoadblocks = mINIFile.ReadBoolean(ECfgSections.SETTINGS.ToString(), ESettings.PoliceIgnoreRoadblocks.ToString(), Constants.DefaultPoliceIgnoreRoadblocks);
@@ -123,7 +117,6 @@ namespace Stealth.Plugins.TrafficControl.Common
 
         private enum ESettings
         {
-            BetaKey,
             RestrictedSpeed,
             SpeedZoneRadius,
             PoliceIgnoreRoadblocks,

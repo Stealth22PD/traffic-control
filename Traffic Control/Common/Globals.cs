@@ -33,17 +33,5 @@ namespace Stealth.Plugins.TrafficControl.Common
                 return Version.Parse(VersionInfo.FileVersion);
             }
         }
-
-        internal static bool IsBeta
-        {
-            get
-            {
-#if BETA
-                return true;
-#else
-                return false;
-#endif
-            }
-        }
     }
 }

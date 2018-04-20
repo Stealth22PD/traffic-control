@@ -153,7 +153,7 @@ namespace Stealth.Plugins.TrafficControl.Common
 
         internal static void CheckForUpdates()
         {
-            UpdateFuncs.CheckForUpdates(Constants.LCPDFRDownloadID, Globals.Version, Globals.VersionInfo.ProductName, true, Globals.IsBeta);
+            UpdateFuncs.CheckForUpdates(Constants.LCPDFRDownloadID, Globals.Version, Globals.VersionInfo.ProductName, true);
         }
 
         internal static uint DisplayNotification(string subtitle, string text)
