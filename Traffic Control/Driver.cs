@@ -145,12 +145,18 @@ namespace Stealth.Plugins.TrafficControl
                 RadiusIndex = (RadiusChoices.Count - 1);
             }
 
-            ListRestrictedSpeed = new UIMenuListItem("Restricted Speed in MPH", "", SpeedChoices.ToArray())
+            List<DisplayItem> SpeedItems = new List<DisplayItem>();
+            SpeedChoices.ForEach(x => SpeedItems.Add(new DisplayItem(x)));
+
+            ListRestrictedSpeed = new UIMenuListItem("Restricted Speed in MPH", "", SpeedItems)
             {
                 Index = SpeedIndex
             };
 
-            ListSpeedZoneRadius = new UIMenuListItem("Speed Zone Radius in Metres", "", RadiusChoices.ToArray())
+            List<DisplayItem> RadiusItems = new List<DisplayItem>();
+            RadiusChoices.ForEach(x => RadiusItems.Add(new DisplayItem(x)));
+
+            ListSpeedZoneRadius = new UIMenuListItem("Speed Zone Radius in Metres", "", RadiusItems)
             {
                 Index = RadiusIndex
             };
@@ -415,10 +421,10 @@ namespace Stealth.Plugins.TrafficControl
             if (sender.Equals(TrafficMenu) == true)
             {
                 if (listItem.Equals(ListRestrictedSpeed))
-                    Config.RestrictedSpeed = Convert.ToInt32((string)ListRestrictedSpeed.Collection[newIndex].Value);
+                    Config.RestrictedSpeed = Convert.ToInt32(ListRestrictedSpeed.Collection[newIndex].Value);
 
                 else if (listItem.Equals(ListSpeedZoneRadius))
-                    Config.SpeedZoneRadius = Convert.ToInt32((string)ListSpeedZoneRadius.Collection[newIndex].Value);
+                    Config.SpeedZoneRadius = Convert.ToInt32(ListSpeedZoneRadius.Collection[newIndex].Value);
             }
         }
     }

@@ -34,8 +34,8 @@ Global
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.QA|x64.Build.0 = QA|x64
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|x64.ActiveCfg = Release|Any CPU
-		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|x64.Build.0 = Release|Any CPU
+		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|x64.ActiveCfg = Release|x64
+		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

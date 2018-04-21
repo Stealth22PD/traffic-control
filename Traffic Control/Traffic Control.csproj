@@ -144,6 +144,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="PoliceSmartRadio\Display\release.pdn" />
     <None Include="PoliceSmartRadio\Display\release_all.pdn" />
     <None Include="PoliceSmartRadio\Display\slow_traffic.pdn" />
@@ -159,7 +160,7 @@ if "$(ConfigurationName)" == "QA" goto :release
 if "$(ConfigurationName)" == "Release" goto :release
 :release
 copy "$(TargetDir)RagePluginHookSDK.dll" "$(TargetDir)RagePluginHook.dll"
-"$(SolutionDir)packages\ConfuserEx.0.5.0\tools\Confuser.CLI.exe" "$(TargetDir)Traffic Control.crproj"
+"$(SolutionDir)packages\ConfuserEx.0.6.0\tools\Confuser.CLI.exe" "$(TargetDir)Traffic Control.crproj"
 
 :exit</PostBuildEvent>
   </PropertyGroup>

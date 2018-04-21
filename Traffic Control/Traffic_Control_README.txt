@@ -1,6 +1,6 @@
 ﻿Traffic Control for GTA V
 Version 1.1
-Copyright (C) 2017 Stealth22. All rights reserved.
+Copyright (C) 2018 Stealth22. All rights reserved.
 
 Any unauthorized modification, reverse engineering, or distribution (including re-uploading of any kind) is strictly prohibited.
 
@@ -22,9 +22,9 @@ PLEASE REMOVE "TrafficControl.dll" and "TrafficControl.ini" FROM YOUR "Plugins" 
 -------------------------
 Requirements
 -------------------------
-- You must have version 0.51 (or newer) of the RAGE Plugin Hook installed. You must have a fully legal, non-pirated version of GTA V.
+- You must have version 0.62 (or newer) of the RAGE Plugin Hook installed. You must have a fully legal, non-pirated version of GTA V.
 - You must have version 0.3.1 (or newer) of LSPDFR installed.
-- The version of Stealth.Common.dll included with this package is v1.8.6327.18243. (NOTE: Older versions will not work!!)
+- The version of Stealth.Common.dll included with this package is v2.0.6684.38422. (NOTE: Older versions will not work!!)
 - Traffic Control WILL CHECK what versions of RPH and Stealth.Common you have installed. It will refuse to run if incorrect versions are installed.
 
 -------------------------
