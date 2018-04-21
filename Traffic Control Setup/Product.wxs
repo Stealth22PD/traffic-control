@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define Traffic Control_TargetDir=$(var.Traffic Control.TargetDir)?>
-  <Product Id="*" Name="Traffic Control" Language="1033" Version="1.1.0.0" Manufacturer="Stealth22" UpgradeCode="5f1e4789-df19-4fc5-9769-4b9ac0f23468">
+  <Product Id="*" Name="Traffic Control" Language="1033" Version="1.1.1.0" Manufacturer="Stealth22" UpgradeCode="5f1e4789-df19-4fc5-9769-4b9ac0f23468">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -89,13 +89,6 @@
       </Component>
       <Component Id="Traffic_Control_README.txt" Guid="ba0f913c-a135-4fb5-a5a0-ff416eff1977">
         <File Id="Traffic_Control_README.txt" Name="Traffic_Control_README.txt" Source="$(var.Traffic Control_TargetDir)Traffic_Control_README.txt" />
-      </Component>
-      
-      <Component Id="RagePluginHookSDK.dll" Guid="121883dc-c038-4cbd-9f45-98d0020bea9e">
-        <File Id="RagePluginHookSDK.dll" Name="RagePluginHookSDK.dll" Source="$(var.Traffic Control_TargetDir)RagePluginHookSDK.dll" />
-      </Component>
-      <Component Id="LSPD_First_Response.dll" Guid="ba6d426e-22b1-4b1b-b2e3-28069cd74580">
-        <File Id="LSPD_First_Response.dll" Name="LSPD First Response.dll" Source="$(var.Traffic Control_TargetDir)LSPD First Response.dll" />
       </Component>
     </ComponentGroup>
 
