@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Traffic Control Setup", "Traffic Control Setup\Traffic Control Setup.wixproj", "{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traffic Control", "Traffic Control\Traffic Control.csproj", "{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}"
 EndProject
 Global
@@ -17,13 +15,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Debug|x64.ActiveCfg = Debug|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.QA|Any CPU.ActiveCfg = Release|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.QA|x64.ActiveCfg = Release|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Release|Any CPU.ActiveCfg = Release|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Release|x64.ActiveCfg = Release|x64
-		{EE40DD58-D97F-4F23-B0F0-60F6BA98CB20}.Release|x64.Build.0 = Release|x64
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02ABA90A-6EBC-4ABD-9509-174DFAE9A1DE}.Debug|x64.ActiveCfg = Debug|x64

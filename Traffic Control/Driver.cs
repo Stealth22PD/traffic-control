@@ -415,7 +415,7 @@ namespace Stealth.Plugins.TrafficControl
                     Config.BlipsEnabled = isChecked;
             }
         }
-
+        
         private static void TrafficMenu_OnListChange(UIMenu sender, UIMenuListItem listItem, int newIndex)
         {
             if (sender.Equals(TrafficMenu) == true)
