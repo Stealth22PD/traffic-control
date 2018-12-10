@@ -33,6 +33,7 @@ namespace Stealth.Plugins.TrafficControl.Common
         internal const Keys DefaultMenuKey = Keys.F10;
         internal const Keys DefaultMenuModKey = Keys.ControlKey;
 
+        internal const bool CheckForUpdates = true;
         internal const int DefaultRestrictedSpeed = 20;
         internal const int DefaultSpeedZoneRadius = 60;
         internal const bool DefaultPoliceIgnoreRoadblocks = false;
