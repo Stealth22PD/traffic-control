@@ -29,6 +29,7 @@ namespace Stealth.Plugins.TrafficControl.Common
         internal static Keys MenuKey { get; set; } = Constants.DefaultMenuKey;
         internal static Keys MenuModKey { get; set; } = Constants.DefaultMenuModKey;
 
+        internal static bool CheckForUpdates { get; set; } = Constants.CheckForUpdates;
         internal static int RestrictedSpeed { get; set; } = Constants.DefaultRestrictedSpeed;
         internal static int SpeedZoneRadius { get; set; } = Constants.DefaultSpeedZoneRadius;
         internal static bool PoliceIgnoreRoadblocks { get; set; } = Constants.DefaultPoliceIgnoreRoadblocks;
@@ -51,6 +52,7 @@ namespace Stealth.Plugins.TrafficControl.Common
             mINIFile.Create();
 
             // Settings
+            mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.CheckForUpdates.ToString(), Constants.CheckForUpdates);
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.RestrictedSpeed.ToString(), Constants.DefaultRestrictedSpeed);
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.SpeedZoneRadius.ToString(), Constants.DefaultSpeedZoneRadius);
             mINIFile.Write(ECfgSections.SETTINGS.ToString(), ESettings.PoliceIgnoreRoadblocks.ToString(), Constants.DefaultPoliceIgnoreRoadblocks);
@@ -86,6 +88,7 @@ namespace Stealth.Plugins.TrafficControl.Common
         private static void ReadINI()
         {
             // Settings
+            CheckForUpdates = mINIFile.ReadBoolean(ECfgSections.SETTINGS.ToString(), ESettings.CheckForUpdates.ToString(), Constants.CheckForUpdates);
             RestrictedSpeed = mINIFile.ReadInt32(ECfgSections.SETTINGS.ToString(), ESettings.RestrictedSpeed.ToString(), Constants.DefaultRestrictedSpeed);
             SpeedZoneRadius = mINIFile.ReadInt32(ECfgSections.SETTINGS.ToString(), ESettings.SpeedZoneRadius.ToString(), Constants.DefaultSpeedZoneRadius);
             PoliceIgnoreRoadblocks = mINIFile.ReadBoolean(ECfgSections.SETTINGS.ToString(), ESettings.PoliceIgnoreRoadblocks.ToString(), Constants.DefaultPoliceIgnoreRoadblocks);
@@ -117,6 +120,7 @@ namespace Stealth.Plugins.TrafficControl.Common
 
         private enum ESettings
         {
+            CheckForUpdates,
             RestrictedSpeed,
             SpeedZoneRadius,
             PoliceIgnoreRoadblocks,
